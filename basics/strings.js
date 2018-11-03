@@ -1,14 +1,18 @@
 /**
+ *  Strings and Variables
+ * 
  *  Creating Variables
  *  String Concatenation
  */
-
 
 let firstName = 'Jerome';
 let lastName = 'Moon';
 let fullName = firstName + ' ' +  lastName;
 
 console.log(fullName);
+
+
+// Challenge area
 
 // Create a variable to store the city
 let city = 'Seoul';
