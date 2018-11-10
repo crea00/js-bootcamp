@@ -2,8 +2,7 @@
  *  Undefined and Null
  */
 
-
- //Undefined for variable
+//Undefined for variable
 let name
 
 name = 'Jen';
