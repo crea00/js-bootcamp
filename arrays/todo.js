@@ -1,24 +1,38 @@
-const todos = [
-  'Order cat food',
-  'Clean kitchen',
-  'Buy food',
-  'Do work',
-  'Exercise'
-];
+const todos = [{
+  text: 'Order cat food',
+  completed: false
+}, {
+  text: 'Clean kitchen',
+  completed: false
+}, {
+  text: 'Buy food',
+  completed: false
+}, {
+  text: 'Do work',
+  completed: true
+}, {
+  text: 'Exercise',
+  completed: true
+}];
 
-// todos.splice(2, 1);
-// todos.push('Buy coffee');
-// todos.shift();
+// This is mine!
+// const deleteTodo = function(todos, todoText) {
+//   for(let i = 0; i < todos.length - 1; i++) {
+//     if(todos[i].text.toLowerCase() === todoText.toLowerCase()) {
+//       todos.splice(i, 1);
+//     };
+//   };
+// };
 
-console.log(`You have ${todos.length} todos!`);
-
-todos.forEach(function(todo, index) {
-  const num = index + 1;
-  console.log(`${num}. ${todo}`);
-});
-
-for(let count = 0; count < todos.length; count++) {
-  const num = count + 1;
-  const todo = todos[count];
-  console.log(`${num}. ${todo}`);
+// This is in Udemy
+const deleteTodo = function(todos, todoText) {
+  const index = todos.findIndex(function(todo) {
+    return todo.text.toLowerCase() === todoText.toLowerCase();
+  });
+  if(index > -1) {
+    todos.splice(index, 1);
+  };
 };
+
+deleteTodo(todos, 'buy food');
+console.log(todos);
