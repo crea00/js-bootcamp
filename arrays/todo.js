@@ -15,15 +15,6 @@ const todos = [{
   completed: true
 }];
 
-// This is mine!
-// const deleteTodo = function(todos, todoText) {
-//   for(let i = 0; i < todos.length - 1; i++) {
-//     if(todos[i].text.toLowerCase() === todoText.toLowerCase()) {
-//       todos.splice(i, 1);
-//     };
-//   };
-// };
-
 // This is in Udemy
 const deleteTodo = function(todos, todoText) {
   const index = todos.findIndex(function(todo) {
@@ -43,5 +34,21 @@ const getThingsToDo = function(todos) {
   });
 };
 
+// console.log(getThingsToDo(todos));
 
-console.log(getThingsToDo(todos));
+// false is first
+const sortTodos = function(todos) {
+  todos.sort(function(a, b) {
+    if(!a.completed && b.completed) {
+      return -1;
+    } else if(!b.completed && a.completed) {
+      return 1;
+    } else {
+      return 0;
+    }
+  })
+}
+
+sortTodos(todos);
+console.log(todos);
+
