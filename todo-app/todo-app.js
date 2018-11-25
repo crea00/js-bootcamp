@@ -31,3 +31,8 @@ todos.forEach(function(todo) {
   paragraph.textContent = todo.text; 
   document.querySelector('body').appendChild(paragraph);
 });
+
+// Listen for new todo creation
+document.querySelector('button').addEventListener('click', function(e) {
+  console.log('Add a new todo...');
+});
