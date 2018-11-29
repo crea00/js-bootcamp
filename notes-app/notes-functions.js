@@ -27,6 +27,7 @@ const generateNoteDOM = function(note) {
   // Setup the note title text
   if (note.title.length > 0) {
     textEl.textContent = note.title;
+    console.log(note.title);
   } else {
     textEl.textContent = 'Unnamed note';
   };
@@ -37,14 +38,14 @@ const generateNoteDOM = function(note) {
 };
 
 // Render application notes
-const renderNotes = function (notes, filters) {
-  const filteredNotes = notes.filter(function (note) {
+const renderNotes = function(notes, filters) {
+  const filteredNotes = notes.filter(function(note) {
     return note.title.toLowerCase().includes(filters.searchText.toLowerCase());
   });
-
+  
   document.querySelector('#notes').innerHTML = '';
-
-  filteredNotes.forEach(function (note) {
+  
+  filteredNotes.forEach(function(note) {
     const noteEl = generateNoteDOM(note);
     document.querySelector('#notes').appendChild(noteEl);
   });
