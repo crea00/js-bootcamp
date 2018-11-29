@@ -3,7 +3,7 @@ const getSavedNotes = function() {
   const notesJSON = localStorage.getItem('notes');
 
   if (notesJSON !== null) {
-    return notes = JSON.parse(notesJSON);
+    return JSON.parse(notesJSON);
   } else {
     return [];
   };
@@ -11,7 +11,7 @@ const getSavedNotes = function() {
 
 // Save the note sto localStorage
 const saveNotes = function(notes) {
-  localStorage.setItem("notes", JSON.stringify(notes));
+  localStorage.setItem('notes', JSON.stringify(notes));
 };
 
 // Generate the DOM structure for a note
