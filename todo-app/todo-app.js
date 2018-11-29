@@ -1,45 +1,8 @@
-let todos = [];
+const todos = getSavedTodos();
 
 const filters = {
   searchText: '',
   hideCompleted: false
-};
-
-const todosJSON = localStorage.getItem('todos');
-
-if(todosJSON !== null) {
-  todos = JSON.parse(todosJSON);
-};
-
-const renderTodos = function(todos, filters) {
-  const filteredTodos = todos.filter(function(todo) {
-    const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
-    const hideCompletedMatch = !filters.hideCompleted || !todo.completed; 
-
-    return searchTextMatch && hideCompletedMatch;
-  });
-
-  const incompleteTodos = filteredTodos.filter(function (todo) {
-    return !todo.completed;
-  });
-
-  document.querySelector('#todos').innerHTML = '';
-
-  const summary = document.createElement('h2');
-  summary.textContent = `You have ${incompleteTodos.length} todos left`;
-  document.querySelector('#todos').appendChild(summary);
-
-  filteredTodos.forEach(function(todo) {
-    const paragraph = document.createElement('p');
-
-    if(todo.text) {
-      paragraph.textContent = todo.text;
-    } else {
-      paragraph.textContent = 'Unnamed todo';
-    };
-
-    document.querySelector('#todos').appendChild(paragraph);
-  });
 };
 
 renderTodos(todos, filters);
@@ -55,7 +18,8 @@ document.querySelector('#new-todo').addEventListener('submit', function(e) {
     text: e.target.elements.text.value,
     completed: false
   });
-  localStorage.setItem('todos', JSON.stringify(todos));
+  
+  saveTodos(todos);
   renderTodos(todos, filters);
   e.target.elements.text.value = '';
 });
